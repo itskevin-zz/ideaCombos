@@ -4,3 +4,7 @@ body {
 .row {
     padding-top: 2rem;
 }
+footer {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
