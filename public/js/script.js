@@ -1,63 +1,46 @@
 $(document).ready(function(){
     getUser();
-    getTechnology();
+    //getTechnology();
     getScenario();
 });
 
 function getUser() {
-    var userURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Users?alt=json&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU";
-    // https://spreadsheets.google.com/feeds/cells/16hLjS8YR0bm95ukZ4MnhmtyJOUidvsfW_lovREkqUi4/od6/public/basic?alt=json
+    var userURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Users?majorDimension=COLUMNS&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU";
     $.getJSON(userURL, function(data){
 
-        var usersTypes = data.feed.entry;
+        var usersTypes = data.values[0]
         var users = []; // store users
 
-        for (var i = 0; i < usersTypes.length; i++) {
-            users.push(usersTypes[i].content.$t);
-        }
-        var randomUser = Math.floor(Math.random()*users.length);
-        document.getElementById("random-user").innerHTML = users[randomUser];
+        var randomUser = Math.floor(Math.random()*usersTypes.length);
+        document.getElementById("random-user").innerHTML = usersTypes[randomUser];
     });
 }
 
-function getTechnology() {
-    //var techURL = "https://spreadsheets.google.com/feeds/cells/16hLjS8YR0bm95ukZ4MnhmtyJOUidvsfW_lovREkqUi4/2/public/basic?alt=json"
-    var techURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Technology?alt=json&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU"
+/*function getTechnology() {
+    var techURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Technology?majorDimension=COLUMNS&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU"
     $.getJSON(techURL, function(data){
-        var techTypes = data.feed.entry;
-        var techName = []; //every even row
-        var techDesc = []; // every odd row
 
-        for (var i = 0; i < techTypes.length; i++){
-            if (i%2 === 0){
-                techName.push(techTypes[i].content.$t);
-            }
-            else {
-                techDesc.push(techTypes[i].content.$t);
-            }
-        }
+        var techName = data.values[0]; 
+        //var techDesc = data.values[1];
+
         var randomTech = Math.floor(Math.random()*techName.length);
         document.getElementById("random-tech-name").innerHTML = techName[randomTech];
-        document.getElementById("random-tech-desc").innerHTML = techDesc[randomTech];
+        //document.getElementById("random-tech-desc").innerHTML = techDesc[randomTech];
     });
-}
+}*/
 
 function getScenario(){
-    var scenarioURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Scenarios?alt=json&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU"
+    var scenarioURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Scenarios?majorDimension=COLUMNS&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU"
     $.getJSON(scenarioURL, function(data){
-        var scenarioTypes = data.feed.entry;
-        var scenario = [];
+        var scenarioTypes = data.values[0];
 
-        for (var i = 0; i < scenarioTypes.length; i++){
-            scenario.push(scenarioTypes[i].content.$t);
-        }
         var randomScenario = Math.floor(Math.random()*scenarioTypes.length);
-        document.getElementById("random-scenario").innerHTML = scenario[randomScenario];
+        document.getElementById("random-scenario").innerHTML = scenarioTypes[randomScenario];
     });
 }
 
 function getIdeas() {
     getUser();
-    getTechnology();
+   // getTechnology();
     getScenario();
 }
