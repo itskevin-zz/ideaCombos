@@ -5,7 +5,7 @@ $(document).ready(function(){
 });
 
 function getUser() {
-    var userURL = "https://spreadsheets.google.com/feeds/cells/16hLjS8YR0bm95ukZ4MnhmtyJOUidvsfW_lovREkqUi4/1/public/basic?alt=json";
+    var userURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Users?alt=json&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU";
     // https://spreadsheets.google.com/feeds/cells/16hLjS8YR0bm95ukZ4MnhmtyJOUidvsfW_lovREkqUi4/od6/public/basic?alt=json
     $.getJSON(userURL, function(data){
 
@@ -17,12 +17,12 @@ function getUser() {
         }
         var randomUser = Math.floor(Math.random()*users.length);
         document.getElementById("random-user").innerHTML = users[randomUser];
-
     });
 }
 
 function getTechnology() {
-    var techURL = "https://spreadsheets.google.com/feeds/cells/16hLjS8YR0bm95ukZ4MnhmtyJOUidvsfW_lovREkqUi4/2/public/basic?alt=json"
+    //var techURL = "https://spreadsheets.google.com/feeds/cells/16hLjS8YR0bm95ukZ4MnhmtyJOUidvsfW_lovREkqUi4/2/public/basic?alt=json"
+    var techURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Technology?alt=json&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU"
     $.getJSON(techURL, function(data){
         var techTypes = data.feed.entry;
         var techName = []; //every even row
@@ -43,7 +43,7 @@ function getTechnology() {
 }
 
 function getScenario(){
-    var scenarioURL = "https://spreadsheets.google.com/feeds/cells/16hLjS8YR0bm95ukZ4MnhmtyJOUidvsfW_lovREkqUi4/3/public/basic?alt=json"
+    var scenarioURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Scenarios?alt=json&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU"
     $.getJSON(scenarioURL, function(data){
         var scenarioTypes = data.feed.entry;
         var scenario = [];
