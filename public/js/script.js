@@ -1,6 +1,6 @@
 $(document).ready(function(){
     getUser();
-    //getTechnology();
+    getTechnology();
     getScenario();
 });
 
@@ -21,11 +21,11 @@ function getTechnology() {
     $.getJSON(techURL, function(data){
 
         var techName = data.values[0]; 
-        //var techDesc = data.values[1];
+        var techDesc = data.values[1];
 
         var randomTech = Math.floor(Math.random()*techName.length);
         document.getElementById("random-tech-name").innerHTML = techName[randomTech];
-        //document.getElementById("random-tech-desc").innerHTML = techDesc[randomTech];
+        document.getElementById("random-tech-desc").innerHTML = techDesc[randomTech];
     });
 }
 
