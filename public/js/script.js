@@ -38,7 +38,7 @@ function getScenario(){
         document.getElementById("random-scenario").innerHTML = scenarioTypes[randomScenario];
     });
 }
-
+ 
 function getIdeas() {
     getUser();
     getTechnology();
