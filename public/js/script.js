@@ -16,7 +16,7 @@ function getUser() {
     });
 }
 
-/*function getTechnology() {
+function getTechnology() {
     var techURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Technology?majorDimension=COLUMNS&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU"
     $.getJSON(techURL, function(data){
 
@@ -27,7 +27,7 @@ function getUser() {
         document.getElementById("random-tech-name").innerHTML = techName[randomTech];
         //document.getElementById("random-tech-desc").innerHTML = techDesc[randomTech];
     });
-}*/
+}
 
 function getScenario(){
     var scenarioURL = "https://sheets.googleapis.com/v4/spreadsheets/19TJnUIukeJFCX9r9sBTrq1vkHnN8UBJnNXQ0xRTc8wE/values/Scenarios?majorDimension=COLUMNS&key=AIzaSyACja4DfjxBU-fbqFvE6hlGEUqgxsxOFvU"
@@ -41,6 +41,6 @@ function getScenario(){
 
 function getIdeas() {
     getUser();
-   // getTechnology();
+    getTechnology();
     getScenario();
 }
